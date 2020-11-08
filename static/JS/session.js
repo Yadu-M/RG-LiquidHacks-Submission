@@ -20,12 +20,14 @@ function stopWatch(){
 
     seconds++;
 
-    console.log(seconds);
+   
+    console.log(hours);
+    
 
-    if (hours%2 === 0){    
+    if (minutes%59 === 0 && minutes > 0 && seconds === 60){    
         function showNotification() {
             const notification = new Notification("New message from Liquid Health!", {
-                    body: "Time For A Break! Take some time to walk around and stretch.",
+                    body: "Hey Buddy, time to drink water!",
                     icon: src="/static/images/LiquidHealth-logo.png"
             });
         }
@@ -38,10 +40,10 @@ function stopWatch(){
         
     }
 
-    if (minutes === 60){    
+    if (hours%1 === 0 && hours > 0 && minutes === 59 && seconds === 60){    
         function showNotification() {
             const notification = new Notification("New message from Liquid Health!", {
-                    body: "Hey Buddy, time to drink water!",
+                    body: "Time For A Break! Take some time to walk around and stretch.",
                     icon: src="/static/images/LiquidHealth-logo.png"
             });
         }
@@ -100,7 +102,7 @@ function startStop(){
     if(status === "stopped"){
 
         //Start the stopwatch (by calling the setInterval() function)
-        interval = window.setInterval(stopWatch, 1000);
+        interval = window.setInterval(stopWatch, 10);
         document.getElementById("startStop").innerHTML = "Stop";
         status = "started";
         
